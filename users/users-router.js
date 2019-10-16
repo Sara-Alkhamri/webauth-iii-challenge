@@ -7,7 +7,7 @@ const Users = require('./users-model');
 router.get('/', restricted, (req, res) => {
     Users.find()
       .then(users => {
-        res.json({loggedInUser: req.username, users});
+        res.json({users, loggedInUser: req.user.username});
       })
       .catch(err => res.send(err));
   });
